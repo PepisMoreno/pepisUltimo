@@ -64,7 +64,7 @@ crossorigin="anonymous">
 <td>{{planta.imagen}}<img width="60" :src="planta.imagen" :alt="planta.nombre">
 </td>
 <td>
-<a class="btn btn-primary" href="./pages/planta_update.html" >Modificar</a><!--REVISAR: estaba :href="'../api-de-prueba/pages/planta_update.html?id='+ planta.id"  -->
+<a class="btn btn-warning" href="./pages/planta_update.html" >Editar</a><!--REVISAR: estaba :href="'../api-de-prueba/pages/planta_update.html?id='+ planta.id"  -->
 <button type="button" class="btn btn-danger" v-on:click="eliminar(planta.id)" >Borrar</button>
 </td>
 </tr>
