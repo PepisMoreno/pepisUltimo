@@ -44,8 +44,8 @@ redirect: 'follow'
 fetch(this.url, options)
 .then(function () {
 alert("Registro modificado")
-window.location.href = "./plantas.html"; //me parece que hay algun error aquí. porque cuando pongo modificar acepta el registro pero no lo muestra
-})
+window.location.href = "../plantas.html"; //me parece que hay algun error aquí. porque cuando pongo modificar acepta el registro pero no lo muestra
+})//me fije en el chat gpt y dice que así debería estar en el mismo directorio, pero este archivo (planta_editar.js) está en un directorio más adentro...
 .catch(err => {
 console.error(err);
 alert("Error al Modificar")
