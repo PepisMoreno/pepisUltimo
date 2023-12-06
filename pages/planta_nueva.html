@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Planta Nueva</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/estilos.css" />
+</head>
+<body>
+    <header id="header">
+        <h1>Nueva Planta</h1>
+    </header>
+    <main>
+        <div class="container" id="app">
+            <form style="background-color: aliceblue;margin:10px auto ; width: 400px; padding: 20px;">
+                <h1>Alta de planta</h1>
+                <div class="mb-3">
+                    <label for="nombreComun">Nombre Común</label>
+                    <input type="text" name="nombreComun" id="nombreComun" v-model="nombreComun">
+                </div>
+                <div class="mb-3">
+                    <label for="nombreCientif">Nombre Científico</label>
+                    <input type="text" name="nombreCientif" id="nombreCientif" v-model="nombreCientifico">
+                </div>
+                <div class="mb-3">
+                    <label for="imagen">Imagen</label>
+                    <input type="text" name="imagen" id="imagen" v-model="imagen">
+                    <img width="100" :src="foto" alt="">
+                </div>
+                   
+                <button type="button" class="btn btn-success"
+                v-on:click="grabar()">Guardar</button> <!--revisar si está como grabar o como guardar-->
+            </form>
+        </div>
+    </main>
+  <!--agregar nuestro footer-->
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous">
+    </script>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../js/plantas.js"></script>
+</body>
+</html>
