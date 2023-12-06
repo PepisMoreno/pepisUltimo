@@ -44,7 +44,7 @@ redirect: 'follow'
 fetch(this.url, options)
 .then(function () {
 alert("Registro modificado")
-window.location.href = "./plantas.html";
+window.location.href = "./plantas.html"; //me parece que hay algun error aquí. porque cuando pongo modificar acepta el registro pero no lo muestra
 })
 .catch(err => {
 console.error(err);
