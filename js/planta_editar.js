@@ -6,9 +6,9 @@ createApp({
 data() {
 return {
 id:0,
-nombreComun:"",
-nombreCientif:"",
-imagen:"",
+nombre_comun:"",
+nombre_cientifico:"",
+foto:"",
 url:'http://127.0.0.1:5000/plantas'+id,//revisar si esta es la ruta que tiene que ir
 }
 },
@@ -20,9 +20,9 @@ fetch(url)
 
 console.log(data)
 this.id=data.id
-this.nombreComun = data.nombreComun;
-this.nombreCientif = data.nombreCientif;
-this.imagen=data.imagen
+this.nombre_comun = data.nombre_comun;
+this.nombre_cientifico = data.nombre_cientifico;
+this.foto=data.foto
 })
 .catch(err => {
 console.error(err);
@@ -31,9 +31,9 @@ this.error=true
 },
 modificar() {
 let planta = {
-nombreComun:this.nombreComun,
-nombreCientif:this.nombreCientif,
-imagen:this.imagen
+nombre_comun:this.nombre_comun,
+nombre_cientifico:this.nombre_cientifico,
+foto:this.foto
 }
 var options = {
 body: JSON.stringify(planta),

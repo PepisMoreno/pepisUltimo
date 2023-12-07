@@ -48,7 +48,7 @@ ma = Marshmallow(app): Se crea un objeto ma de la clase Marshmallow, que se util
 # Configura la URI de la base de datos con el driver de MySQL, usuario, contraseña y nombre de la base de datos
 # URI de la BD == Driver de la BD://user:password@UrlBD/nombreBD
 # app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:root@localhost/proyecto"
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:root@localhost/plantas3"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:root@localhost/plantas_grupo12"
 # Configura el seguimiento de modificaciones de SQLAlchemy a False para mejorar el rendimiento
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # Crea una instancia de la clase SQLAlchemy y la asigna al objeto db para interactuar con la base de datos
@@ -58,18 +58,18 @@ ma = Marshmallow(app)
 
 #----------------------modelos---------------
 #defino la tabla
-class Plantas(db.Model):  # Plantas hereda de db.Model
+class Planta(db.Model):  # Plantas hereda de db.Model
     """
     Definición de la tabla Plantas en la base de datos.
     La clase Plantas hereda de db.Model.
     Esta clase representa la tabla "Plantas" en la base de datos.
     """
     id = db.Column(db.Integer, primary_key=True)
-    nombreComun = db.Column(db.String(100))
-    nombreCientif = db.Column(db.String(100))
-    imagen = db.Column(db.String(400))
+    nombre_comun = db.Column(db.String(100))
+    nombre_cientifico = db.Column(db.String(150))
+    foto = db.Column(db.String(400))
 
-    def __init__(self, nombreComun, nombreCientif, imagen):
+    def __init__(self, nombre_comun, nombre_cientifico, foto):
         """
         Constructor de la clase Plantas.
 
@@ -78,9 +78,9 @@ class Plantas(db.Model):  # Plantas hereda de db.Model
             nombreCientif (str): Nombre científico de la planta.
             imagen (str): URL o ruta de la imagen de la planta.
         """
-        self.nombreComun = nombreComun
-        self.nombreCientif = nombreCientif
-        self.imagen = imagen
+        self.nombre_comun = nombre_comun
+        self.nombre_cientifico = nombre_cientifico
+        self.foto = foto
 
     # Se pueden agregar más clases para definir otras tablas en la base de datos
 
@@ -97,7 +97,7 @@ class PlantasSchema(ma.Schema):
     para la clase Plantas.
     """
     class Meta:
-        fields = ("id", "nombreComun", "nombreCientif", "imagen")
+        fields = ("id", "nombre_comun", "nombre_cientifico", "foto")
 
 planta_schema = PlantasSchema()  # Objeto para serializar/deserializar un producto
 plantas_schema = PlantasSchema(many=True)  # Objeto para serializar/deserializar múltiples productos
@@ -112,13 +112,13 @@ return jsonify(result): El resultado serializado en formato JSON se devuelve com
 
 '''
 @app.route("/plantas", methods=["GET"])
-def get_Plantas():
+def get_Planta():
     """
     Endpoint para obtener todas las plantas de la base de datos.
 
     Retorna un JSON con todos los registros de la tabla de plantas.
     """
-    all_plantas = Plantas.query.all()  # Obtiene todos los registros de la tabla de productos
+    all_plantas = Planta.query.all()  # Obtiene todos los registros de la tabla de productos
     result = plantas_schema.dump(all_plantas)  # Serializa los registros en formato JSON
     return jsonify(result)  # Retorna el JSON de todos los registros de la tabla
 
@@ -143,12 +143,13 @@ update_planta(id):
 '''
 @app.route("/plantas/<id>", methods=["GET"])
 def get_planta(id):
+
     """
     Endpoint para obtener una planta específico de la base de datos.
 
     Retorna un JSON con la información de la planta correspondiente al ID proporcionado.
     """
-    planta = Plantas.query.get(id)  # Obtiene la planta correspondiente al ID recibido
+    planta = Planta.query.get(id)  # Obtiene la planta correspondiente al ID recibido
     return planta_schema.jsonify(planta)  # Retorna el JSON de la planta
 
 @app.route("/plantas/<id>", methods=["DELETE"])
@@ -158,7 +159,7 @@ def delete_planta(id):
 
     Elimina la planta correspondiente al ID proporcionado y retorna un JSON con el registro eliminado.
     """
-    planta = Plantas.query.get(id)  # Obtiene la planta correspondiente al ID recibido
+    planta = Planta.query.get(id)  # Obtiene la planta correspondiente al ID recibido
     db.session.delete(planta)  # Elimina la planta de la sesión de la base de datos
     db.session.commit()  # Guarda los cambios en la base de datos
     return planta_schema.jsonify(planta)  # Retorna el JSON de la planta eliminada
@@ -171,10 +172,10 @@ def create_planta():
     Lee los datos proporcionados en formato JSON por el cliente y crea un nuevo registro de producto en la base de datos.
     Retorna un JSON con la nueva planta creada
     """
-    nombreComun = request.json["nombreComun"]  # Obtiene el nombre de la planta del JSON proporcionado
-    nombreCientif = request.json["nombreCientif"]  # Obtiene el nombre científico de la planta del JSON proporcionado
-    imagen = request.json["imagen"]  # Obtiene la imagen de la planta del JSON proporcionado
-    new_planta = Plantas(nombreComun, nombreCientif, imagen)  # Crea un nuevo objeto Producto con los datos proporcionados
+    nombre_comun = request.json["nombre_comun"]  # Obtiene el nombre de la planta del JSON proporcionado
+    nombre_cientifico = request.json["nombre_cientifico"]  # Obtiene el nombre científico de la planta del JSON proporcionado
+    foto = request.json['foto']  # Obtiene la imagen de la planta del JSON proporcionado
+    new_planta = Planta(nombre_comun, nombre_cientifico, foto)  # Crea un nuevo objeto Producto con los datos proporcionados
     db.session.add(new_planta)  # Agrega la nueva planta a la sesión de la base de datos
     db.session.commit()  # Guarda los cambios en la base de datos
     return planta_schema.jsonify(new_planta)  # Retorna el JSON de la nueva planta creada
@@ -187,12 +188,12 @@ def update_planta(id):
     Lee los datos proporcionados en formato JSON por el cliente y actualiza el registro del producto con el ID especificado.
     Retorna un JSON con la planta actualizada.
     """
-    planta = Plantas.query.get(id)  # Obtiene la planta existente con el ID especificado
+    planta = Planta.query.get(id)  # Obtiene la planta existente con el ID especificado
 
     # Actualiza los atributos de la planta con los datos proporcionados en el JSON
-    planta.nombreComun = request.json["nombreComun"]
-    planta.nombreCientif = request.json["nombreCientif"]
-    planta.imagen = request.json["imagen"]
+    planta_nombre_comun = request.json["nombre_comun"]
+    planta_nombre_Cientifico = request.json["nombre_cientifico"]
+    planta_foto = request.json['foto']
 
     db.session.commit()  # Guarda los cambios en la base de datos
     return planta_schema.jsonify(planta)  # Retorna el JSON de la planta actualizada

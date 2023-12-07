@@ -10,9 +10,9 @@ error:false,
 cargando:true,
 /*atributos para el guardar los valores del formulario */
 id:0,
-nombreComun:"",
-nombreCientif:"",
-imagen:"",
+nombre_comun:"",
+nombre_cientifico:"",
+foto:"",
 }
 },
 methods: {
@@ -42,9 +42,9 @@ location.reload();
 },
 grabar(){
 let planta = {
-nombre:this.nombreComun,
-nombreCientif: this.nombreCientif,
-imagen:this.imagen
+nombre_comun: this.nombre_comun,
+nombre_cientifico: this.nombre_cientifico,
+foto:this.foto
 }
 var options = {
 body:JSON.stringify(planta),
