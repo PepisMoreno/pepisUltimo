@@ -1,0 +1,8 @@
+Actualizo: 
+* agregué footer y navbar a las http 
+* PRobé todo con Thunder Client y funciona. 
+* (En mi caso, a diferencia de PEpis, tengo otros nombres en mysql, por lo que tuve que cambiar todo)
+* Cambié todas las comillas dobles por simples (')
+* Agrega bien. Los botones funcionan pero me muestra el espacio vacío.... (adjunto foto) debe haber problemas con el new_producto en el JS. 
+* Agregué boton para carga rimagen.. pero no llegué a conectarlo https://kumbiaphp.com/blog/2017/03/27/subir-imagen-y-datos-con-kumbiaphp/ LINK PARA SEGUIR VIENDO. TIENE CÓDIGOS
+https://www.htmlquick.com/es/reference/tags/input-image.html

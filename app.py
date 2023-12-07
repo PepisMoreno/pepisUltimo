@@ -48,7 +48,7 @@ ma = Marshmallow(app): Se crea un objeto ma de la clase Marshmallow, que se util
 # Configura la URI de la base de datos con el driver de MySQL, usuario, contraseña y nombre de la base de datos
 # URI de la BD == Driver de la BD://user:password@UrlBD/nombreBD
 # app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:root@localhost/proyecto"
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:root@localhost/plantas_grupo12"
+app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql+pymysql://root:root@localhost/plantas_grupo12'
 # Configura el seguimiento de modificaciones de SQLAlchemy a False para mejorar el rendimiento
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # Crea una instancia de la clase SQLAlchemy y la asigna al objeto db para interactuar con la base de datos
@@ -97,7 +97,7 @@ class PlantasSchema(ma.Schema):
     para la clase Plantas.
     """
     class Meta:
-        fields = ("id", "nombre_comun", "nombre_cientifico", "foto")
+        fields = ('id', 'nombre_comun', 'nombre_cientifico', 'foto')
 
 planta_schema = PlantasSchema()  # Objeto para serializar/deserializar un producto
 plantas_schema = PlantasSchema(many=True)  # Objeto para serializar/deserializar múltiples productos
@@ -172,15 +172,15 @@ def create_planta():
     Lee los datos proporcionados en formato JSON por el cliente y crea un nuevo registro de producto en la base de datos.
     Retorna un JSON con la nueva planta creada
     """
-    nombre_comun = request.json["nombre_comun"]  # Obtiene el nombre de la planta del JSON proporcionado
-    nombre_cientifico = request.json["nombre_cientifico"]  # Obtiene el nombre científico de la planta del JSON proporcionado
+    nombre_comun = request.json['nombre_comun']  # Obtiene el nombre de la planta del JSON proporcionado
+    nombre_cientifico = request.json['nombre_cientifico']  # Obtiene el nombre científico de la planta del JSON proporcionado
     foto = request.json['foto']  # Obtiene la imagen de la planta del JSON proporcionado
     new_planta = Planta(nombre_comun, nombre_cientifico, foto)  # Crea un nuevo objeto Producto con los datos proporcionados
     db.session.add(new_planta)  # Agrega la nueva planta a la sesión de la base de datos
     db.session.commit()  # Guarda los cambios en la base de datos
     return planta_schema.jsonify(new_planta)  # Retorna el JSON de la nueva planta creada
 
-@app.route("/plantas/<id>", methods=["PUT"])  # Endpoint para actualizar una planta
+@app.route('/plantas/<id>', methods=['PUT'])  # Endpoint para actualizar una planta
 def update_planta(id):
     """
     Endpoint para actualizar una planta existente en la base de datos.
@@ -191,8 +191,8 @@ def update_planta(id):
     planta = Planta.query.get(id)  # Obtiene la planta existente con el ID especificado
 
     # Actualiza los atributos de la planta con los datos proporcionados en el JSON
-    planta_nombre_comun = request.json["nombre_comun"]
-    planta_nombre_Cientifico = request.json["nombre_cientifico"]
+    planta_nombre_comun = request.json['nombre_comun']
+    planta_nombre_Cientifico = request.json['nombre_cientifico']
     planta_foto = request.json['foto']
 
     db.session.commit()  # Guarda los cambios en la base de datos
@@ -203,6 +203,6 @@ Este código es el programa principal de la aplicación Flask. Se verifica si el
 
 '''
 # Programa Principal
-if __name__ == "__main__":
+if __name__ == '__main__':
     # Ejecuta el servidor Flask en el puerto 5000 en modo de depuración
     app.run(debug=True, port=5000)
