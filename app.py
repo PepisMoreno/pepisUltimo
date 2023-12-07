@@ -191,9 +191,9 @@ def update_planta(id):
     planta = Planta.query.get(id)  # Obtiene la planta existente con el ID especificado
 
     # Actualiza los atributos de la planta con los datos proporcionados en el JSON
-    planta_nombre_comun = request.json['nombre_comun']
-    planta_nombre_Cientifico = request.json['nombre_cientifico']
-    planta_foto = request.json['foto']
+    planta.nombre_comun = request.json['nombre_comun']
+    planta.nombre_cientifico = request.json['nombre_cientifico']
+    planta.foto = request.json['foto']
 
     db.session.commit()  # Guarda los cambios en la base de datos
     return planta_schema.jsonify(planta)  # Retorna el JSON de la planta actualizada
