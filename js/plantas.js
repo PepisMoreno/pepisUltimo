@@ -68,3 +68,7 @@ created() {
 this.fetchData(this.url)
 },
 }).mount('#app')
+
+createApp.listen(port, '127.0.0.1',() =>{
+    console.log('Escuchando en el puerto'+port);
+});

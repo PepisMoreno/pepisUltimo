@@ -59,9 +59,9 @@ crossorigin="anonymous">
 <tbody>
 <tr class="" v-for="planta in plantas">
 <td scope="row">{{planta.id}}</td>
-<td>{{planta.nombreComun}}</td>
-<td>{{planta.nombreCientif}}</td>
-<td>{{planta.imagen}}<img width="60" :src="planta.imagen" :alt="planta.nombre">
+<td>{{planta.nombre_comun}}</td>
+<td>{{planta.nombre_cientifico}}</td>
+<td>{{planta.foto}}<img width="60" :src="planta.foto" :alt="planta.foto">
 </td>
 <td>
 <a class="btn btn-warning" href="./pages/planta_update.html" >Editar</a><!--REVISAR: estaba :href="'../api-de-prueba/pages/planta_update.html?id='+ planta.id"  -->

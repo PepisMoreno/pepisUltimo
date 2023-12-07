@@ -111,7 +111,7 @@ result = productos_schema.dump(all_productos): Los registros obtenidos se serial
 return jsonify(result): El resultado serializado en formato JSON se devuelve como respuesta al cliente utilizando la función jsonify() de Flask. Esta función envuelve el resultado en una respuesta HTTP con el encabezado Content-Type establecido como application/json.
 
 '''
-@app.route("/plantas", methods=["GET"])
+@app.route('/plantas', methods=['GET'])
 def get_Planta():
     """
     Endpoint para obtener todas las plantas de la base de datos.
@@ -141,7 +141,7 @@ update_planta(id):
     # Retorna un JSON con el producto actualizado
 
 '''
-@app.route("/plantas/<id>", methods=["GET"])
+@app.route('/plantas/<id>', methods=['GET'])
 def get_planta(id):
 
     """
@@ -152,7 +152,7 @@ def get_planta(id):
     planta = Planta.query.get(id)  # Obtiene la planta correspondiente al ID recibido
     return planta_schema.jsonify(planta)  # Retorna el JSON de la planta
 
-@app.route("/plantas/<id>", methods=["DELETE"])
+@app.route('/plantas/<id>', methods=['DELETE'])
 def delete_planta(id):
     """
     Endpoint para eliminar una planta de la base de datos.
@@ -164,7 +164,7 @@ def delete_planta(id):
     db.session.commit()  # Guarda los cambios en la base de datos
     return planta_schema.jsonify(planta)  # Retorna el JSON de la planta eliminada
 
-@app.route("/plantas", methods=["POST"])  # Endpoint para crear un producto
+@app.route('/plantas', methods=['POST'])  # Endpoint para crear un producto
 def create_planta():
     """
     Endpoint para crear una nueva planta en la base de datos.

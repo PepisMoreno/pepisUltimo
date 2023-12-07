@@ -7,15 +7,32 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="../styles.css"/>
 </head>
+<header id="header">
+    <!--revisar header  y footer para que quede homologo al nuestro-->  
+            <header class="header">
+              <!--cambie el header -->
+              <div class="logo"><!--acá colocamos la img dentro de una etiqueta <a> para convertirla en un enlace -->
+          
+                  <li><a href="index.html"><img src="../img/logo1.png" alt="LOGO"></a> </li>
+          
+              </div>
+        <nav>
+            <ul class="navegacion">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="formulario-de-contacto.html">Contacto</a></li>
+                <li><a href="nosotras.html">Nosotras</a></li>
+                <li><a href="tips.html">Tips comunidad</a></li>
+            </ul>
+        </nav></header>
 <body>
     <header id="header">
         <h1>Caracterizador de plantas</h1>
     </header>
     <main>
         <div class="container" id="app">
-            <form style="background-color: rgb(29, 87, 29);margin:10px auto ; width: 400px; padding: 20px;">
+            <form style="background-color: rgb(77, 114, 77);margin:10px auto ; width: 400px; padding: 20px;">
             <h2>Editar planta </h2>
             
             <div class="mb-3">
@@ -39,9 +56,15 @@
             </form>
         </div>
     </main>
-    <footer>
-       <!--agregar nuestro footer-->
-    </footer>
+    <footer class="footer"> <!--este es el footer-->
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-whatsapp"></i>
+
+        <p class="footer"> &#169 Todos los derechos reservados 2023<br>
+
+            Programado por Josefina Moreno, Carina Rodrigues y Sofia Pizzamus</p>
+</footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
