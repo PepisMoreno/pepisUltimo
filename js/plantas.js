@@ -40,7 +40,7 @@ fetch(url, options)
 location.reload();
 })
 },
-grabar(){
+guardar(){
 let planta = {
 nombre:this.nombreComun,
 nombreCientif: this.nombreCientif,
