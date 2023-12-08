@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <link rel="stylesheet" href="../css/styles.css">
+<script src="https://kit.fontawesome.com/3b21fc997b.js" crossorigin="anonymous"></script>    
+<title>Identificador de Plantas</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel="shortcut icon" href="./img/favicon.ico">
+</head>
+<body>
+    <header id="header">
+        <header class="header">
+            <div class="logo"><!--acá colocamos la img dentro de una etiqueta <a> para convertirla en un enlace -->
+        
+                <li><a href="index.html"><img src="./img/logo1.png" alt="LOGO"></a> </li>
+        
+            </div>
+      <nav>
+          <ul class="navegacion">
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="formulario-de-contacto.html">Contacto</a></li>
+              <li><a href="nosotras.html">Nosotras</a></li>
+              <li><a href="tips.html">Tips comunidad</a></li>
+          </ul>
+      </nav></header>
+    </header>
+    <main>
+        <div id="app" class="container">
+            <h1>Plantas</h1>
+            <br>
+            <a  class="btn btn-primary" href="planta_nueva.html">Nuevo</a>
+            <br><br>
+            <div v-if="error">
+                <p>Lo sentimos , ........</p>
+        </div>
+        <div v-else>
+            <section v-if="cargando">
+                 <div class="spinner-border"></div>
+                 <p>Cargando .....</p>
+            </section>
+             <section v-else>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nombre Común</th>
+                                <th scope="col">Nombre Científico</th>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class=""  v-for="planta in plantas">
+                                <td scope="row">{{planta.id}}</td>
+                                <td>{{planta.nombreComun}}</td>
+                                <td>{{planta.nombreCientif}}</td>
+                                <td><img width="100" :src="planta.imagen" :alt="planta.nombre">
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" :href="'planta_editar.html?id='+ planta.id">Editar</a>
+                                    <button type="button" class="btn btn-danger" v-on:click="eliminar(planta.id)">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+    
+<footer class="footer"> <!--este es el footer-->
+    <i class="fa-brands fa-facebook"></i>
+    <i class="fa-brands fa-instagram"></i>
+    <i class="fa-brands fa-whatsapp"></i>
+
+    <p class="footer"> &#169 Todos los derechos reservados 2023<br>
+
+        Programado por Josefina Moreno, Carina Rodrigues y Sofia Pizzamus</p>
+</footer>
+<!-- Link de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script><!--Link de VUE-->
+    <script src="../js/identificador_de_plantas.js"></script>
+</body>
+</html>

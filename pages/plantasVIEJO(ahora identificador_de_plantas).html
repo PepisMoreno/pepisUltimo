@@ -62,7 +62,7 @@ crossorigin="anonymous">
 <td>{{planta.nombreComun}}</td>
 <td>{{planta.nombreCientif}}</td>
 <td>{{planta.imagen}}<img width="60" :src="planta.imagen" :alt="planta.nombre">
-</td>
+</td> <!--esto estaba mal-->
 <td>
 <a class="btn btn-warning" href="./pages/planta_editar.html" >Editar</a><!--REVISAR: estaba :href="'../api-de-prueba/pages/planta_editar.html?id='+ planta.id"  -->
 <button type="button" class="btn btn-danger" v-on:click="eliminar(planta.id)" >Borrar</button>
